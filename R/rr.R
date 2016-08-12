@@ -12,9 +12,10 @@ logistic <- function(x) exp(x)/(1+exp(x))
 #' the Maximum Likelihood (ML) estimation for the Expectation-Maximization (EM)
 #' algorithm.
 #' 
-#' @usage rrreg(formula, p, p0, p1, q, design, data, start = NULL, maxIter =
-#' 10000, verbose = FALSE, optim = FALSE, em.converge = 10^(-8), glmMaxIter =
-#' 10000, solve.tolerance = .Machine$double.eps)
+#' @usage rrreg(formula, p, p0, p1, q, design, data, start = NULL, h = NULL, 
+#' group = NULL, matrixMethod = "efficient", maxIter = 10000, verbose = FALSE, 
+#' optim = FALSE, em.converge = 10^(-8), glmMaxIter = 10000, solve.tolerance = 
+#' .Machine$double.eps)
 #' @param formula An object of class "formula": a symbolic description of the
 #' model to be fitted.
 #' @param p The probability of receiving the sensitive question (Mirrored
@@ -31,6 +32,14 @@ logistic <- function(x) exp(x)/(1+exp(x))
 #' @param data A data frame containing the variables in the model.
 #' @param start Optional starting values of coefficient estimates for the
 #' Expectation-Maximization (EM) algorithm.
+#' @param h Optional named numeric vector with length equal to number of 
+#' groups. Names correspond to group labels and values correspond to auxiliary
+#' moments.
+#' @param group Character vector of group labels with length equal to number of
+#' observations.
+#' @param matrixMethod Procedure for estimating optimal weighting matrix for
+#' generalized method of moments. One of "efficient" for two-step feasible
+#' and "cue" for continuously updating. Default is "efficient".
 #' @param maxIter Maximum number of iterations for the Expectation-Maximization
 #' algorithm. The default is \code{10000}.
 #' @param verbose A logical value indicating whether model diagnostics counting
@@ -90,6 +99,9 @@ logistic <- function(x) exp(x)/(1+exp(x))
 #' ## Replicates Table 3 in Blair, Imai, and Zhou (2014)
 #' 
 #' @export
+#' 
+#' @importFrom magic adiag
+#' @importFrom stats pchisq
 rrreg <- function(formula, p, p0, p1, q, design, data, start = NULL, 
                   h = NULL, group = NULL, matrixMethod = "efficient", 
                   maxIter = 10000, verbose = FALSE, 
