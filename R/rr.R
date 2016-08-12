@@ -234,6 +234,8 @@ rrreg <- function(formula, p, p0, p1, q, design, data, start = NULL,
     # auxiliary data functionality  
     if (aux.check) {     
 
+        dlogistic.coef <- function(x) exp(x) / (1 + exp(x))^2
+
         score <- function (beta, y, x, w = NULL, c, d ) {
             n <- length(y)
             if (missing(w)) w <- rep(1, n)
@@ -790,7 +792,7 @@ print.summary.rrreg <- function(x, ...){
     "The overidentification test statistic was: ", x$J.stat, " (p < ", x$overid.p, ")", ".\n", sep = "")
 
   cat("\n")
-  
+
   invisible(x)
 
 }
