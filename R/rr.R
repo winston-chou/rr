@@ -640,7 +640,7 @@ coef.rrreg <- function(object, ...){
 #' 
 #' @importFrom MASS mvrnorm
 #' 
-#' @S3method predict rrreg 
+#' @export
 predict.rrreg <- function(object, given.y = FALSE, alpha = .05, 
                           n.sims = 1000, avg = FALSE, newdata = NULL, 
                           quasi.bayes = FALSE, keep.draws = FALSE, ...) {
@@ -740,12 +740,12 @@ predict.rrreg <- function(object, given.y = FALSE, alpha = .05,
   
 }
 
-#' @S3method summary rrreg 
+#' @export
 summary.rrreg <- function(object, ...) {
   structure(object, class = c("summary.rrreg", class(object)))
 }
 
-#' @S3method print rrreg 
+#' @export
 print.rrreg <- function(x, ...){
 
   cat("\nRandomized Response Technique Regression \n\nCall: ")
@@ -777,7 +777,7 @@ print.rrreg <- function(x, ...){
 
 }
 
-#' @S3method print.summary rrreg 
+#' @export
 print.summary.rrreg <- function(x, ...){
 
   cat("\nRandomized Response Technique Regression \n\nCall: ")
