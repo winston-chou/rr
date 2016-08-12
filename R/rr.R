@@ -770,8 +770,6 @@ print.rrreg <- function(x, ...){
   if (x$aux) cat("Incorporating ", x$nh, " auxiliary moment(s). Weighting method: ", x$wm, ".\n", 
     "The overidentification test statistic was: ", x$J.stat, " (p < ", x$overid.p, ")", ".\n", sep = "")
 
-  cat("\n")
-
   invisible(x)
 
 }
@@ -802,8 +800,6 @@ print.summary.rrreg <- function(x, ...){
   # auxiliary data functionality -- print details
   if (x$aux) cat("Incorporating ", x$nh, " auxiliary moment(s). Weighting method: ", x$wm, ".\n", 
     "The overidentification test statistic was: ", x$J.stat, " (p < ", x$overid.p, ")", ".\n", sep = "")
-
-  cat("\n")
 
   invisible(x)
 
