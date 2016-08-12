@@ -431,7 +431,7 @@ rrreg <- function(formula, p, p0, p1, q, design, data, start = NULL,
     
     # auxiliary data functionality -- set up return object
     return.object$aux <- aux.check
-    
+
     if (aux.check) {
       return.object$nh <- length(h)
       return.object$wm <- ifelse(matrixMethod == "cue", "continuously updating", 
@@ -640,7 +640,7 @@ coef.rrreg <- function(object, ...){
 #' 
 #' @importFrom MASS mvrnorm
 #' 
-#' @method predict rrreg 
+#' @S3method predict rrreg 
 predict.rrreg <- function(object, given.y = FALSE, alpha = .05, 
                           n.sims = 1000, avg = FALSE, newdata = NULL, 
                           quasi.bayes = FALSE, keep.draws = FALSE, ...) {
@@ -740,12 +740,12 @@ predict.rrreg <- function(object, given.y = FALSE, alpha = .05,
   
 }
 
-#' @export
+#' @S3method summary rrreg 
 summary.rrreg <- function(object, ...) {
   structure(object, class = c("summary.rrreg", class(object)))
 }
 
-#' @export
+#' @S3method print rrreg 
 print.rrreg <- function(x, ...){
 
   cat("\nRandomized Response Technique Regression \n\nCall: ")
@@ -777,7 +777,7 @@ print.rrreg <- function(x, ...){
 
 }
 
-#' @export
+#' @S3method print.summary rrreg 
 print.summary.rrreg <- function(x, ...){
 
   cat("\nRandomized Response Technique Regression \n\nCall: ")
