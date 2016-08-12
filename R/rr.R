@@ -430,6 +430,8 @@ rrreg <- function(formula, p, p0, p1, q, design, data, start = NULL,
     }
     
     # auxiliary data functionality -- set up return object
+    return.object$aux <- aux.check
+    
     if (aux.check) {
       return.object$nh <- length(h)
       return.object$wm <- ifelse(matrixMethod == "cue", "continuously updating", 
