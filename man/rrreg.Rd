@@ -4,9 +4,10 @@
 \alias{rrreg}
 \title{Randomized Response Regression}
 \usage{
-rrreg(formula, p, p0, p1, q, design, data, start = NULL, maxIter =
-10000, verbose = FALSE, optim = FALSE, em.converge = 10^(-8), glmMaxIter =
-10000, solve.tolerance = .Machine$double.eps)
+rrreg(formula, p, p0, p1, q, design, data, start = NULL, h = NULL, 
+group = NULL, matrixMethod = "efficient", maxIter = 10000, verbose = FALSE, 
+optim = FALSE, em.converge = 10^(-8), glmMaxIter = 10000, solve.tolerance = 
+.Machine$double.eps)
 }
 \arguments{
 \item{formula}{An object of class "formula": a symbolic description of the
@@ -32,6 +33,17 @@ is assumed to be independent of covariates (Unrelated Question Design).}
 
 \item{start}{Optional starting values of coefficient estimates for the
 Expectation-Maximization (EM) algorithm.}
+
+\item{h}{Optional named numeric vector with length equal to number of 
+groups. Names correspond to group labels and values correspond to auxiliary
+moments.}
+
+\item{group}{Character vector of group labels with length equal to number of
+observations.}
+
+\item{matrixMethod}{Procedure for estimating optimal weighting matrix for
+generalized method of moments. One of "efficient" for two-step feasible
+and "cue" for continuously updating. Default is "efficient".}
 
 \item{maxIter}{Maximum number of iterations for the Expectation-Maximization
 algorithm. The default is \code{10000}.}
