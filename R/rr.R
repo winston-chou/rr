@@ -738,12 +738,12 @@ predict.rrreg <- function(object, given.y = FALSE, alpha = .05,
   
 }
 
-#' @s3method
+#' @method summary rrreg
 summary.rrreg <- function(object, ...) {
   structure(object, class = c("summary.rrreg", class(object)))
 }
 
-#' @s3method
+#' @method print rrreg
 print.rrreg <- function(x, ...){
 
   cat("\nRandomized Response Technique Regression \n\nCall: ")
@@ -775,7 +775,6 @@ print.rrreg <- function(x, ...){
 
 }
 
-#' @s3method
 print.summary.rrreg <- function(x, ...){
 
   cat("\nRandomized Response Technique Regression \n\nCall: ")
